@@ -1,11 +1,11 @@
-pipeline {
-  agent any
-  stages {
-    stage('') {
-      steps {
-        git(url: 'https://github.com/prabhhjeet-singh/node-js-sample', branch: 'master')
-      }
+node {
+  stage('SCM') {
+    checkout scm
+  }
+  stage('SonarQube Analysis') {
+    def scannerHome = tool 'SonarScanner';
+    withSonarQubeEnv() {
+      sh "${scannerHome}/bin/sonar-scanner"
     }
-
   }
 }

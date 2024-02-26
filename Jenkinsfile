@@ -5,7 +5,7 @@ node {
   stage('SonarQube Analysis') {
 //    def scannerHome = tool 'SonarQube Scanner';
     withSonarQubeEnv() {
-      sh "/opt/sonarqube/bin/linux-x86-64/sonar.sh console"
+      sh "/opt/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner"
     }
   }
 }
